@@ -1,6 +1,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/03edc66903794f9e950b3ffbc52475de)](https://www.codacy.com/manual/KHaack/Dnn.hrm?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KHaack/Dnn.hrm&amp;utm_campaign=Badge_Grade)
 
-# Dnn.hrm
+# DNN HRM
 DotNetNuke Modules for Human Resource Management.
 
 ## Prerequisites
