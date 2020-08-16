@@ -1,0 +1,197 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B33C70EF-8AA4-4511-AD04-983468EBDF5D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kostenstellen</RootNamespace>
+    <AssemblyName>DnnHrm.DnnModules.Kostenstellen</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <!-- References -->
+  <ItemGroup>
+    <Reference Include="DotNetNuke">
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\bin\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web, Version=7.4.2.216, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\bin\DotNetNuke.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\bin\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\bin\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\..\..\..\..\..\inetpub\wwwroot\bin\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <!-- local resources -->
+  <ItemGroup>
+    <LocalResources Include="App_LocalResources\**\*.resx" />
+  </ItemGroup>
+  <!-- javascripts -->
+  <ItemGroup>
+    <Javascripts Include="Javascript\ServiceClient.js" />
+    <Javascripts Include="Javascript\Site.js" />
+    <Javascripts Include="Javascript\ViewModel.js" />
+  </ItemGroup>
+  <!-- styles -->
+  <ItemGroup>
+    <Styles Include="Styles\**\*.css" />
+  </ItemGroup>
+  <!-- public content -->
+  <ItemGroup>
+    <Content Include="*.ascx" />
+    <Content Include="icon.png" />
+    <Content Include="Installation\CleanUp\CleanUp.01.00.00.txt" />
+    <Content Include="Installation\License.txt" />
+    <Content Include="Installation\ReleaseNotes\Release.01.00.00.txt" />
+  </ItemGroup>
+  <!-- compile content -->
+  <ItemGroup>
+    <Compile Include="Controller\KostenstellenController.cs" />
+    <Compile Include="Controller\ModuleSecurity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RouteMapper.cs" />
+    <Compile Include="Services\ServiceController.cs" />
+    <Compile Include="View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- _______________________________________________________________ -->
+  <ItemGroup>
+    <Content Include="Javascript\Site.js" />
+    <Content Include="Javascript\ViewModel.js" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.dnn" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DnnHrmLib\DnnHrmLib.csproj">
+      <Project>{3137c4c0-1485-4b3a-8e79-6f1819da9b9d}</Project>
+      <Name>DnnHrmLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- _______________________________________________________________ -->
+  <!-- build process -->
+  <!-- _______________________________________________________________ -->
+  <Target Name="BeforeBuild">
+    <Message Text="MSBuildProjectDirectory: $(MSBuildProjectDirectory)" Importance="high" />
+    <Message Text="VisualStudioVersion:     $(VisualStudioVersion)" Importance="high" />
+    <Message Text="MSBuildToolsVersion:     $(MSBuildToolsVersion)" Importance="high" />
+    <Message Text="MSBuildToolsPath:        $(MSBuildToolsPath)" Importance="high" />
+    <Message Text=" " Importance="high" />
+    <Message Text="Start building $(MSBuildProjectName)..." Importance="high" />
+  </Target>
+  <Target Name="AfterBuild">
+    <Message Text=" " Importance="high" />
+    <Message Text="Collect resources..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Resources\" />
+    <Copy SourceFiles="@(LocalResources)" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Resources\App_LocalResources\" />
+    <Copy SourceFiles="@(Javascripts)" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Resources\Javascript\" />
+    <Copy SourceFiles="@(Styles)" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Resources\Styles\" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\icon.png" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Resources\" />
+    <Message Text="Create ZIPs..." Importance="high" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\Installation\Temp" />
+    <ZipDirectory SourceDirectory="$(MSBuildProjectDirectory)\Installation\Resources" DestinationFile="$(MSBuildProjectDirectory)\Installation\Temp\Resources.zip" Overwrite="true" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\config.dnn" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Temp\" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Installation\ReleaseNotes\Release.01.00.00.txt" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Temp\" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Installation\License.txt" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Temp\" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Installation\CleanUp\CleanUp.01.00.00.txt" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Temp\Installation\CleanUp\" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" DestinationFolder="$(MSBuildProjectDirectory)\Installation\Temp\bin\" />
+    <ZipDirectory SourceDirectory="$(MSBuildProjectDirectory)\Installation\Temp\" DestinationFile="$(MSBuildProjectDirectory)\Installation\$(MSBuildProjectName)_01.00.00_Install.zip" Overwrite="true" />
+    <Message Text=" " Importance="high" />
+    <Message Text="CleanUp..." Importance="high" />
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\Installation\Temp\" />
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\Installation\Resources\" />
+    <Delete Files="$(MSBuildProjectDirectory)\Installation\Resources.zip" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55979/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
