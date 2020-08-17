@@ -4,13 +4,13 @@
 <%@ Register TagPrefix="dnn" TagName="Label" Src="../../controls/LabelControl.ascx" %>
 
 <dnn:DnnJsInclude runat="server" FilePath="~/Resources/Shared/scripts/knockout.js" />
+<dnn:DnnJsInclude runat="server" FilePath="~/DesktopModules/Kostenstellen/Javascript/KostenstelleViewModel.js" />
 <dnn:DnnJsInclude runat="server" FilePath="~/DesktopModules/Kostenstellen/Javascript/ViewModel.js" />
 <dnn:DnnJsInclude runat="server" FilePath="~/DesktopModules/Kostenstellen/Javascript/Site.js" />
 
 <script>
     Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
         var site = new DnnHrm.DnnModules.Kostenstellen.Site(<%= this.PortalSettings.PortalId %>, <%= this.ModuleId %>);
-
         site.OnDocumentReady();
     });
 </script>
@@ -53,7 +53,8 @@
                                     Bearbeiten <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </button>
                                 <button type="button"
-                                    class="btn btn-danger">
+                                    class="btn btn-danger"
+                                    data-bind="click: $parent.removeKostenstelle">
                                     Entfernen <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </div>

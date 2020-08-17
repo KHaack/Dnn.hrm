@@ -1,5 +1,7 @@
 ﻿Type.registerNamespace("DnnHrm.DnnModules.Kostenstellen");
 DnnHrm.DnnModules.Kostenstellen.Site = function (portalId, moduleId) {
+    var self = this;
+
     /**
      * The API service framework. 
      */
@@ -15,7 +17,8 @@ DnnHrm.DnnModules.Kostenstellen.Site = function (portalId, moduleId) {
      */
     var settings = {
         url: {
-            GetKostenstellen: 'GetKostenstellen'
+            GetKostenstellen: 'GetKostenstellen',
+            RemoveKostenstellen: 'RemoveKostenstellen'
         }
     }
 
@@ -24,7 +27,9 @@ DnnHrm.DnnModules.Kostenstellen.Site = function (portalId, moduleId) {
      */
     var viewModel = new DnnHrm.DnnModules.Kostenstellen.ViewModel();
 
-    // search
+    /**
+     * search
+     **/
     viewModel.filteredKostenstellen = ko.dependentObservable(function () {
         var filter = viewModel.searchTerm().toLowerCase();
         if (!filter) {
@@ -34,7 +39,28 @@ DnnHrm.DnnModules.Kostenstellen.Site = function (portalId, moduleId) {
                 return item.name().toLowerCase().includes(filter);
             });
         }
-    }, viewModel);
+    }, this);
+
+    /**
+     * remove kostenstelle.
+     */
+    viewModel.removeKostenstelle = function (kostenstelle) {
+        $.ajax({
+            type: "GET",
+            url: serviceRoot + settings.url.RemoveKostenstellen,
+            beforeSend: serviceFramework.setModuleHeaders,
+            data: {
+                kostenstelle: kostenstelle.toObject()
+            },
+            cache: false,
+            error: function (request, status, error) {
+                alert(request.responseText);
+            },
+            success: function () {
+                viewModel.kostenstellen.remove(kostenstelle);
+            }
+        });
+    }
 
     // bind
     ko.applyBindings(viewModel);
@@ -61,5 +87,6 @@ DnnHrm.DnnModules.Kostenstellen.Site = function (portalId, moduleId) {
                 }
             }
         });
-    }
+    };
+
 }

@@ -63,6 +63,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -83,7 +85,6 @@
   </ItemGroup>
   <!-- javascripts -->
   <ItemGroup>
-    <Javascripts Include="Javascript\ServiceClient.js" />
     <Javascripts Include="Javascript\Site.js" />
     <Javascripts Include="Javascript\ViewModel.js" />
   </ItemGroup>
@@ -94,6 +95,7 @@
   <!-- public content -->
   <ItemGroup>
     <Content Include="*.ascx" />
+    <None Include=".gitignore" />
     <Content Include="icon.png" />
     <Content Include="Installation\CleanUp\CleanUp.01.00.00.txt" />
     <Content Include="Installation\License.txt" />
@@ -103,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Controller\KostenstellenController.cs" />
     <Compile Include="Controller\ModuleSecurity.cs" />
+    <Content Include="Javascript\KostenstelleViewModel.js" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RouteMapper.cs" />
     <Compile Include="Services\ServiceController.cs" />

@@ -9,5 +9,6 @@ namespace DnnHrm.DnnHrmLib.Models
         public string nummer { get; set; }
         public string name { get; set; }
         public DateTime erstelltAm { get; set; }
+        public bool geloescht { get; set; }
     }
 }
