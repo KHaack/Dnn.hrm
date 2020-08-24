@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die
 // Assemblyinformationen zu ändern.
-[assembly: AssemblyTitle("Kostenstellen")]
+[assembly: AssemblyTitle("Mitarbeiter")]
 [assembly: AssemblyDescription("APS Statistik Modul")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Haack")]
-[assembly: AssemblyProduct("Kostenstellen")]
+[assembly: AssemblyProduct("Mitarbeiter")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 [assembly: CLSCompliant(true)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird.
-[assembly: Guid("b33c70ef-8aa4-4511-ad04-983468ebdf5d")]
+[assembly: Guid("b33c70ef-8aa4-4515-ad04-983468cbdf5e")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //

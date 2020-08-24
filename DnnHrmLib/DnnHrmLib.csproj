@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Kostenstelle.cs" />
+    <Compile Include="Models\Geschlecht.cs" />
+    <Compile Include="Models\Vertrag.cs" />
+    <Compile Include="Models\Mitarbeiter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
