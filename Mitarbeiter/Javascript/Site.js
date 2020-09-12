@@ -20,6 +20,9 @@ DnnHrm.DnnModules.Mitarbeiter.Site = function (portalId, moduleId) {
             GetMitarbeiter: 'GetMitarbeiter',
             GetKostenstellen: 'GetKostenstellen',
             RemoveMitarbeiter: 'RemoveMitarbeiter'
+        },
+        parameter: {
+            kostenstelle: 'kostenstelle'
         }
     }
 
@@ -50,6 +53,8 @@ DnnHrm.DnnModules.Mitarbeiter.Site = function (portalId, moduleId) {
             return;
         } 
 
+        self.SetUrlParameter(settings.parameter.kostenstelle, id);
+
         $.ajax({
             type: "GET",
             url: serviceRoot + settings.url.GetMitarbeiter,
@@ -63,6 +68,7 @@ DnnHrm.DnnModules.Mitarbeiter.Site = function (portalId, moduleId) {
             },
             success: function (data) {
                 viewModel.mitarbeiter.removeAll();
+
                 for (i = 0; i < data.length; i++) {
                     var mitarbeiter = new DnnHrm.DnnModules.Mitarbeiter.MitarbeiterViewModel();
                     mitarbeiter.fromObject(data[i])
@@ -116,7 +122,60 @@ DnnHrm.DnnModules.Mitarbeiter.Site = function (portalId, moduleId) {
                     kostenstelle.fromObject(data[i])
                     viewModel.kostenstellen.push(kostenstelle);
                 }
+
+                viewModel.selectedKostenstelle(self.GetUrlParameter(settings.parameter.kostenstelle));
             }
         });
     };
+
+    /**
+     * Returns the value of the passed url parameter
+     * @param {any} parameterName
+     */
+    this.GetUrlParameter = function(parameterName) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === parameterName) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+
+    /**
+     * Set the passed parameter value to the url.
+     * 
+     * @param {any} parameterName
+     * @param {any} value
+     */
+    this.SetUrlParameter = function (parameterName, value) {
+        var url = window.location.href;
+        var reExp = new RegExp("[\?|\&]" + parameterName + "=[0-9a-zA-Z\_\+\-\|\.\,\;]*");
+
+        if (reExp.test(url)) {
+            // update
+            var reExp = new RegExp("[\?&]" + parameterName + "=([^&#]*)");
+            var delimiter = reExp.exec(url)[0].charAt(0);
+            url = url.replace(reExp, delimiter + parameterName + "=" + value);
+        } else {
+            // add
+            var newParam = parameterName + "=" + value;
+            if (!url.indexOf('?')) {
+                url += '?';
+            }
+
+            if (url.indexOf('#') > -1) {
+                var urlparts = url.split('#');
+                url = urlparts[0] + "?" + newParam + (urlparts[1] ? "#" + urlparts[1] : '');
+            } else {
+                url += "?" + newParam;
+            }
+        }
+        window.history.pushState(null, document.title, url);
+    }
 }

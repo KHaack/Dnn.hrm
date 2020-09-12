@@ -35,9 +35,9 @@
                 <thead>
                     <tr>
                         <th class="text-center col-md-2">Nummer</th>
-                        <th class="text-center col-md-5">Kostenstelle</th>
+                        <th class="text-center col-md-4">Kostenstelle</th>
                         <th class="text-center col-md-2">Erstellt am</th>
-                        <th class="text-center col-md-3"></th>
+                        <th class="text-center col-md-4"></th>
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: filteredKostenstellen">
@@ -52,6 +52,9 @@
                                     data-bind="click: startEditing">
                                     Bearbeiten <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </button>
+                                <a class="btn btn-default" data-bind="attr: {href: mitarbeiterLink}">
+                                    Mitarbeiter <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </a>
                                 <button type="button"
                                     class="btn btn-danger"
                                     data-bind="click: $parent.removeKostenstelle">

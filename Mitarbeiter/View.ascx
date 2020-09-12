@@ -19,10 +19,6 @@
 </script>
 
 <div class="container-fluid">
-    <div class="dnnFormMessage dnnFormInfo" role="alert" data-bind="ifnot: selectedKostenstelle">
-        Bitte wählen Sie eine Kostenstelle aus, um die entsprechenden Mitarbeiter anzuzeigen.
-    </div>
-
     <div class="form-group">
         <label>Kostenstelle</label>
         <select class="form-control"
@@ -33,17 +29,26 @@
                 optionsCaption: 'Bitte wählen...'">
         </select>
     </div>
+
+    <div data-bind="ifnot: selectedKostenstelle">
+        <div class="dnnFormMessage dnnFormInfo" role="alert">
+            Bitte wählen Sie eine Kostenstelle aus, um die entsprechenden Mitarbeiter anzuzeigen.
+        </div>
+    </div>
+
     <div class="form-group" data-bind="if: selectedKostenstelle">
         <label>Nummer</label>
-        <input type="text" class="form-control" disabled data-bind="value: selectedKostenstelle().nummer"/>
+        <input type="text" class="form-control" disabled />
     </div>
+
     <div class="form-group" data-bind="if: selectedKostenstelle">
         <label>Stunden &Oslash;</label>
-        <input type="text" class="form-control" disabled data-bind="value: stundenDurchschnitt"/>
+        <input type="text" class="form-control" disabled data-bind="value: stundenDurchschnitt" />
     </div>
+
     <div class="form-group" data-bind="if: selectedKostenstelle">
         <label>Mitarbeiter Anzahl</label>
-        <input type="text" class="form-control" disabled data-bind="value: mitarbeiter().length"/>
+        <input type="text" class="form-control" disabled data-bind="value: mitarbeiter().length" />
     </div>
 </div>
 <div class="container-fluid" data-bind="if: selectedKostenstelle">
@@ -123,10 +128,31 @@
                                 aria-label="Name"
                                 data-bind="value: name" />
                         </td>
-                        <td>- automatisch generiert -
+                        <td>
+                            <input class="form-control"
+                                type="text"
+                                placeholder="Telefon"
+                                aria-label="Telefon"
+                                data-bind="value: telefon" /><br />
+                            <input class="form-control"
+                                type="text"
+                                placeholder="E-Mail"
+                                aria-label="E-Mail"
+                                data-bind="value: email" />
                         </td>
                         <td>
 
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                 <button type="button"
                                     class="btn btn-success">

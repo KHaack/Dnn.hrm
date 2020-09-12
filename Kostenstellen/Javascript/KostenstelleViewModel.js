@@ -6,6 +6,9 @@ DnnHrm.DnnModules.Kostenstellen.KostenstelleViewModel = function () {
     this.nummer = ko.observable();
     this.name = ko.observable();
     this.erstelltAm = ko.observable();
+    this.mitarbeiterLink = ko.computed(function () {
+        return "/Mitarbeiter?kostenstelle=" + self.id();
+    });
 
     // saved state for undo editing
     var savedState = {};
@@ -51,4 +54,5 @@ DnnHrm.DnnModules.Kostenstellen.KostenstelleViewModel = function () {
         self.name(obj.name);
         self.erstelltAm(obj.erstelltAm);
     }
+
 }
